@@ -1,4 +1,4 @@
-package com.ganesh.spring_demo;
+package com.sandesh.spring_demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

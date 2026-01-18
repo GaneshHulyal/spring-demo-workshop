@@ -1,21 +1,23 @@
 package com.ganesh.spring_demo.service;
 
-import com.ganesh.spring_demo.dto.StudentResponse;
-import com.ganesh.spring_demo.model.Teacher;
-import com.ganesh.spring_demo.repository.TeacherRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import com.ganesh.spring_demo.model.Course;
+import com.ganesh.spring_demo.model.Teacher;
+import com.ganesh.spring_demo.repository.TeacherRepository;
 
 @Service
 public class TeacherService {
 
     private final TeacherRepository teacherRepository;
+    private final CourseService courseService;
 
-    public TeacherService(TeacherRepository teacherRepository) {
+    public TeacherService(TeacherRepository teacherRepository, CourseService courseService) {
         this.teacherRepository = teacherRepository;
+        this.courseService = courseService;
     }
 
     public Teacher createTeacher(Teacher teacher) {
@@ -48,5 +50,9 @@ public class TeacherService {
             return true;
         }
         return false;
+    }
+    
+    public List<Course> getCoursesByTeacherId(Long teacherId) {
+        return courseService.getCoursesByTeacherId(teacherId);
     }
 }
